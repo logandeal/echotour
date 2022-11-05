@@ -1,14 +1,18 @@
+<meta http-equiv="cache-control" content="no-cache" />
 <html>
   <head>
     <title>echotour</title>
     <link rel="icon" type="image/png" href="mictransparent.png" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="text-to-speech.js"></script>
   </head>
   <body>
     <span class="cyan">echo</span>
     <span class="no-space">tour</span>
-    <p id="prompt">Where do you want to tour?</p>
-    <img src="mic.png" />
+    <div class="main">
+      <p id="prompt">Where do you want to tour?</p>
+      <p class="cyan">...diagnostic messages</p>
+      <img id="mic" src="mic.png" />
+    </div>
   </body>
 </html>
