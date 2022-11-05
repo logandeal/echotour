@@ -2,9 +2,9 @@ const synth = window.speechSynthesis;
 
 voices = synth.getVoices();
 
-window.onload = () => readText();
+window.onload = () => start();
 
-function readText(event) {
+function readText() {
   console.log(document.getElementById("prompt"));
   const promptTxt = document.getElementById("prompt").textContent;
   console.log(promptTxt);
@@ -12,7 +12,7 @@ function readText(event) {
   const utterThis = new SpeechSynthesisUtterance(promptTxt);
   utterThis.voice = voices[0];
   utterThis.pitch = 1;
-  utterThis.rate = 1;
+  utterThis.rate = 1.3;
   synth.speak(utterThis);
 
   utterThis.onpause = (event) => {
@@ -23,11 +23,26 @@ function readText(event) {
   };
 }
 
-function changePrompt(event) {
+function changePrompt() {
   // change prompt to children nodes
   // call readText
 }
 
-document.getElementById("mic").onclick = () => recognizeSpeech();
+function recognizeSpeech() {
+  console.log("dictation started...");
+}
 
-function recognizeSpeech(event) {}
+function startRead() {
+  console.log("reading...");
+  readText();
+  // loop changePrompt
+}
+
+function startRecognition() {
+  document.getElementById("mic").onclick = () => recognizeSpeech();
+}
+
+function start() {
+  startRead();
+  startRecognition();
+}
