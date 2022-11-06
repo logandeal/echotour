@@ -43,14 +43,16 @@ function recognizeSpeech(recognition, diagnostic, bg) {
 
   recognition.onspeechend = () => {
     recognition.stop();
+    speechRecognition(options);
   };
 
   recognition.onnomatch = () => {
-    recognizeSpeech1();
+    recognizeSpeech();
   };
 
   recognition.onerror = (event) => {
     diagnostic.textContent = `Error occurred in recognition: ${event.error}`;
+    speechRecognition(options);
   };
 }
 
