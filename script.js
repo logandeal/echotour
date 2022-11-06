@@ -75,21 +75,24 @@ async function testColorChange() {
 
 function readText(newText) {
   if (newText != "") {
+    console.log("readText");
     document.getElementById("prompt").innerHTML = newText;
   }
   var promptTxt = document.getElementById("prompt").textContent;
-  console.log(promptTxt);
+  // console.log(promptTxt);
 
   if (promptTxt == "Thank you for touring lafferre!") {
     promptTxt = "Thank you for touring laughrey!";
   }
   const utterThis = new SpeechSynthesisUtterance(promptTxt);
-  console.log(utterThis);
+  // console.log(utterThis);
   utterThis.voice = voices[0];
   utterThis.pitch = 1.3;
   utterThis.rate = 1.2;
   synth.speak(utterThis);
-  console.log(access_counter);
+  // console.log(access_counter);
+
+  return utterThis;
 }
 
 function dictation(
@@ -102,9 +105,14 @@ function dictation(
   isLocation // 7
 ) {
   console.log("dictation started...");
+
+  const mic_icon = document.getElementById("mic");
+  mic_icon.src = "blue_mic.png";
+
   recognition.start();
 
   recognition.onresult = (event) => {
+    mic_icon.src = "mic.png";
     let option_inputted = event.results[0][0].transcript;
     if (option_inputted == "laughrey" || option_inputted == "laughing") {
       option_inputted = "lafferre";
@@ -128,15 +136,18 @@ function dictation(
   };
 
   recognition.onspeechend = () => {
+    mic_icon.src = "mic.png";
     recognition.stop();
   };
 
   recognition.onnomatch = () => {
+    mic_icon.src = "mic.png";
     recognizeSpeech();
     speechRecognition(options, node, person, isLocation);
   };
 
   recognition.onerror = (event) => {
+    mic_icon.src = "mic.png";
     diagnostic.textContent = `Error: ${event.error}`;
     speechRecognition(options, node, person, isLocation);
   };
@@ -220,4 +231,4 @@ function evaluate_option(direction_chosen, node, person) {
 
 // Tell user bad input
 // Update prompt
-// Make mic button legal
+// Make mic button blue and red

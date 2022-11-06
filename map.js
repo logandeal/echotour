@@ -38,32 +38,179 @@ class Person {
 
 //declaring nodes
 var root = new Node("the main entrance.", null, null, null, null);
-var node2 = new Node("a staircase with 12 steps leading down.", "a hall that leads to the Interactive digital environments lab, E1419 Auditorium, and Mechanical and Aerospace.", "potential energy cafe.", "the front entrance.", "In this area there is a study area with couches, chairs, tables, and a counter!");
-var node3 = new Node("the main hallway that leads to the west wing and labs C1201 - C1206.", "an elevator, restrooms, labs C1210 - C1215, and an exit to the north couryard.", "a hallway that leads to the east wing, Overholser Atrium, labs C1243 - C1246, and labs C1249 - C1251.", "stairs with 12 steps leading up to potential energy cafe and the main entrance", "This is the portion of the main hallway closest to the entrance.");
-var node4 = new Node("a hallway that leads to labs C1243 - C1246, Overholser Atrium, and Labs W1065 - W1081.", "a hallway that leads to the main entrance.", null, "a hallway that leads to restrooms, an elevator, the Civil and Environmental area, and labs C1249 - C1251", null);
-var node5 = new Node(null, "a hallway that leads to the interactive digital environments lab and an exit.", "a path that leads to the main entrance", "a hallway that leads to the mechanical and aerospace area and labs E1403, E1404, E1411, E1413, and E1414.", null);
-var node6 = new Node("a hall that leads to the interactive digital environments lab and the main entrance", "is a hallway that leads to labs E1411, E1413, E1414, and mechanical and aerospace.", null, "This portion of the hallway houses the Measurement Lab, the Thermal Fluids Lab, and the women's restroom.");
-var node7 = new Node("a hallway that leads to an elevator, restrooms, ketchum auditorium, student services, and administration - deans office.", "a hallway that leads to labs C1201 - C1204.", "a hallway that leads to bas W1065 - W1081, and an exit.", "a hallway that leads to the main entrance.", null);
-var node8 = new Node(null, "an area next to the main entrance.", null, null, "This is Potential Energy Cafe! You can buy coffee and snacks!");
-var node9 = new Node(null, null, "the main hallway", null, "Here there are restrooms, an elevator, labs C1210-C1215 and an exit to the north courtyard");
-var node10 = new Node("a hallway that leads to labs C1243 - C1246.", null, "a hallway that leads to restrooms, an elevator, the Civil and Environmental area, and labs C1249 - C1246", null, null);
-var node11 = new Node("labs C1249 - C1251.", null, null, "the Civil and Environmental area", "There is a small study area here with a vending machine and restrooms.");
-var node12 = new Node("a hallway that leads to labs C1249 - C1251 and restrooms.", null, null, null, "This is the Civil and Environmental area. In front of you is the room where we made this audio tour!");
+var node2 = new Node(
+  "a staircase with 12 steps leading down.",
+  "a hall that leads to the Interactive digital environments lab, E1419 Auditorium, and Mechanical and Aerospace.",
+  "potential energy cafe.",
+  "the front entrance.",
+  "In this area there is a study area with couches, chairs, tables, and a counter!"
+);
+var node3 = new Node(
+  "the main hallway that leads to the west wing and labs C1201 - C1206.",
+  "an elevator, restrooms, labs C1210 - C1215, and an exit to the north couryard.",
+  "a hallway that leads to the east wing, Overholser Atrium, labs C1243 - C1246, and labs C1249 - C1251.",
+  "stairs with 12 steps leading up to potential energy cafe and the main entrance",
+  "This is the portion of the main hallway closest to the entrance."
+);
+var node4 = new Node(
+  "a hallway that leads to labs C1243 - C1246, Overholser Atrium, and Labs W1065 - W1081.",
+  "a hallway that leads to the main entrance.",
+  null,
+  "a hallway that leads to restrooms, an elevator, the Civil and Environmental area, and labs C1249 - C1251",
+  null
+);
+var node5 = new Node(
+  null,
+  "a hallway that leads to the interactive digital environments lab and an exit.",
+  "a path that leads to the main entrance",
+  "a hallway that leads to the mechanical and aerospace area and labs E1403, E1404, E1411, E1413, and E1414.",
+  null
+);
+var node6 = new Node(
+  "a hall that leads to the interactive digital environments lab and the main entrance",
+  "is a hallway that leads to labs E1411, E1413, E1414, and mechanical and aerospace.",
+  null,
+  "This portion of the hallway houses the Measurement Lab, the Thermal Fluids Lab, and the women's restroom."
+);
+var node7 = new Node(
+  "a hallway that leads to an elevator, restrooms, ketchum auditorium, student services, and administration - deans office.",
+  "a hallway that leads to labs C1201 - C1204.",
+  "a hallway that leads to bas W1065 - W1081, and an exit.",
+  "a hallway that leads to the main entrance.",
+  null
+);
+var node8 = new Node(
+  null,
+  "an area next to the main entrance.",
+  null,
+  null,
+  "This is Potential Energy Cafe! You can buy coffee and snacks!"
+);
+var node9 = new Node(
+  null,
+  null,
+  "the main hallway",
+  null,
+  "Here there are restrooms, an elevator, labs C1210-C1215 and an exit to the north courtyard"
+);
+var node10 = new Node(
+  "a hallway that leads to labs C1243 - C1246.",
+  null,
+  "a hallway that leads to restrooms, an elevator, the Civil and Environmental area, and labs C1249 - C1246",
+  null,
+  null
+);
+var node11 = new Node(
+  "labs C1249 - C1251.",
+  null,
+  null,
+  "the Civil and Environmental area",
+  "There is a small study area here with a vending machine and restrooms."
+);
+var node12 = new Node(
+  "a hallway that leads to labs C1249 - C1251 and restrooms.",
+  null,
+  null,
+  null,
+  "This is the Civil and Environmental area. In front of you is the room where we made this audio tour!"
+);
 var node13 = new Node("the west wing", null, "an exit.", null, null);
-var node14 = new Node("a hall that leads to W1065 - W1081.", "a hall that leads to W1065 - W1081.", "an exit.", "labs C1249 - C1251", "Multiple paths lead to W1065 - W1081 because you can access the classrooms from both sides of the hall.");
-var node15 = new Node(null, "classrooms W1065 - W1081.", null, "path that leads to labs C1249 - C1251", null);
-var node16 = new Node("classrooms W1065 - W1081, an exit, and the adiministration / Dean's office.", "classrooms W1065 - W1081.", "labs C1249 - C1251.", "Multiple paths lead to W1065 - W1081 because you can access the classrooms from both sides of the hall.");
-var node17 = new Node("the administration / Dean's offices.", "classrooms W1065 - W1081.", "labs C1249 - C1251.", "labs C1249 - C1251.", null);
-var node18 = new Node(null, "a path towards Student Services, Ketcham Auditorium, and the main hallway", "an exit", "a hallway towards W1065 - W1081", "This is where the administration / Dean's offices are.");
-var node19 = new Node(null, "towards the main hallway.", "in the direction of labs C1249 - C1251.", "a hallway that leads to the Civil and Environmental area and labs C1249 - C1251.", null);
-var node20 = new Node("towards Ketcham Auditorium, Student Services, and rooms W1002 - W1020.", null, "a hallway that leads to restrooms and W1065 - W1081.", "in the direction of the main entrance.", "There are study rooms in this area.");
-var node21 = new Node("towards Ketcham Auditorium and W1002 - W1006.", "a hallway with classrooms W1002 - W1020.", "the administration and dean's offices.", "the main hallway towards the main entrance.");
-var node22 = new Node(null, null, "towards Student Services and the administration and dean's offices", "an exit", "This is where classrooms W1002 - W1020 are.");
-var node23 = new Node(null, "towards ketcham and W1002 - W1006", null, "in the direction of the main hallway and the administration and dean's offices.", "This is where Student Services are. There are two grand staircases and a wide open ceiling.");
-var node24 = new Node(null, null, "towards the Student Services and main hallway", null, "This location has Ketcham Auditorium where many meetings, talks, and events are held. It also has several classrooms.");
-var node25 = new Node(null, "an exit", "the main hallway", null, "This hallway houses the 3D Printing Lab, Mizzou INformation and Data FUsion Lab, and Mizzou Racing.");
-var node26 = new Node(null, "an exit", "towards the main entrance", null, "This is where the CREXR Lab and the Bioinformatics and Machine Learning Lab are located.");
-var node27 = new Node(null, null, "in the direction of the Measurement Lab and Thermal Fluids Lab", "an exit", "In this area are the Automation and Design Lab, AI and Automation Lab, and the Graduate Student Office");
+var node14 = new Node(
+  "a hall that leads to W1065 - W1081.",
+  "a hall that leads to W1065 - W1081.",
+  "an exit.",
+  "labs C1249 - C1251",
+  "Multiple paths lead to W1065 - W1081 because you can access the classrooms from both sides of the hall."
+);
+var node15 = new Node(
+  null,
+  "classrooms W1065 - W1081.",
+  null,
+  "path that leads to labs C1249 - C1251",
+  null
+);
+var node16 = new Node(
+  "classrooms W1065 - W1081, an exit, and the adiministration / Dean's office.",
+  "classrooms W1065 - W1081.",
+  "labs C1249 - C1251.",
+  "Multiple paths lead to W1065 - W1081 because you can access the classrooms from both sides of the hall."
+);
+var node17 = new Node(
+  "the administration / Dean's offices.",
+  "classrooms W1065 - W1081.",
+  "labs C1249 - C1251.",
+  "labs C1249 - C1251.",
+  null
+);
+var node18 = new Node(
+  null,
+  "a path towards Student Services, Ketcham Auditorium, and the main hallway",
+  "an exit",
+  "a hallway towards W1065 - W1081",
+  "This is where the administration / Dean's offices are."
+);
+var node19 = new Node(
+  null,
+  "towards the main hallway.",
+  "in the direction of labs C1249 - C1251.",
+  "a hallway that leads to the Civil and Environmental area and labs C1249 - C1251.",
+  null
+);
+var node20 = new Node(
+  "towards Ketcham Auditorium, Student Services, and rooms W1002 - W1020.",
+  null,
+  "a hallway that leads to restrooms and W1065 - W1081.",
+  "in the direction of the main entrance.",
+  "There are study rooms in this area."
+);
+var node21 = new Node(
+  "towards Ketcham Auditorium and W1002 - W1006.",
+  "a hallway with classrooms W1002 - W1020.",
+  "the administration and dean's offices.",
+  "the main hallway towards the main entrance."
+);
+var node22 = new Node(
+  null,
+  null,
+  "towards Student Services and the administration and dean's offices",
+  "an exit",
+  "This is where classrooms W1002 - W1020 are."
+);
+var node23 = new Node(
+  null,
+  "towards ketcham and W1002 - W1006",
+  null,
+  "in the direction of the main hallway and the administration and dean's offices.",
+  "This is where Student Services are. There are two grand staircases and a wide open ceiling."
+);
+var node24 = new Node(
+  null,
+  null,
+  "towards the Student Services and main hallway",
+  null,
+  "This location has Ketcham Auditorium where many meetings, talks, and events are held. It also has several classrooms."
+);
+var node25 = new Node(
+  null,
+  "an exit",
+  "the main hallway",
+  null,
+  "This hallway houses the 3D Printing Lab, Mizzou INformation and Data FUsion Lab, and Mizzou Racing."
+);
+var node26 = new Node(
+  null,
+  "an exit",
+  "towards the main entrance",
+  null,
+  "This is where the CREXR Lab and the Bioinformatics and Machine Learning Lab are located."
+);
+var node27 = new Node(
+  null,
+  null,
+  "in the direction of the Measurement Lab and Thermal Fluids Lab",
+  "an exit",
+  "In this area are the Automation and Design Lab, AI and Automation Lab, and the Graduate Student Office"
+);
 
 //adding directions to nodes
 root.addUp(node2);
@@ -238,34 +385,110 @@ function giveInstructions(node, person) {
       break;
     }
   }
-  readText(currentString);
-  readText("Here are the directions you may move");
-  switch (person.direction) {
-    case "up":
-      if (node.mapu != null) readText("Forward"); // read option up
-      if (node.mapd != null) readText("Back"); // read option down
-      if (node.mapl != null) readText("Left"); // read option left
-      if (node.mapr != null) readText("Right"); // read option right
-      break;
-    case "down":
-      if (node.mapu != null) readText("Back"); // read option up
-      if (node.mapd != null) readText("Forward"); // read option down
-      if (node.mapl != null) readText("Right"); // read option left
-      if (node.mapr != null) readText("Left"); // read option right
-      break;
-    case "left":
-      if (node.mapu != null) readText("Right"); // read option up
-      if (node.mapd != null) readText("Left"); // read option down
-      if (node.mapl != null) readText("Forward"); // read option left
-      if (node.mapr != null) readText("Back"); // read option right
-      break;
-    case "right":
-      if (node.mapu != null) readText("Left"); // read option up
-      if (node.mapd != null) readText("Right"); // read option down
-      if (node.mapl != null) readText("Back"); // read option left
-      if (node.mapr != null) readText("Forward"); // read option right
-      break;
+  utter1 = readText(currentString);
+  if (currentString.length > 33) {
+    currentString = currentString.substr(0, 33) + "...";
+    document.getElementById("prompt").innerHTML = currentString;
   }
+  utter1.onend = () => {
+    utter2 = readText("Here are the directions you may move");
+    utter2.onend = () => {
+      var valid_directions = "";
+      switch (person.direction) {
+        case "up":
+          if (node.mapu != null) {
+            readText("Forward");
+            valid_directions += "Forward ";
+            // read option up
+          }
+          if (node.mapd != null) {
+            readText("Back");
+            valid_directions += "Back ";
+            // read option down
+          }
+          if (node.mapl != null) {
+            readText("Left");
+            valid_directions += "Left ";
+            // read option left
+          }
+          if (node.mapr != null) {
+            readText("Right");
+            valid_directions += "Right ";
+            // read option right
+          }
+          document.getElementById("prompt").innerHTML = valid_directions;
+          break;
+        case "down":
+          if (node.mapu != null) {
+            readText("Back");
+            valid_directions += "Back ";
+            // read option up
+          }
+          if (node.mapd != null) {
+            readText("Forward");
+            valid_directions += "Forward ";
+            // read option down
+          }
+          if (node.mapl != null) {
+            readText("Right");
+            valid_directions += "Right ";
+            // read option left
+          }
+          if (node.mapr != null) {
+            readText("Left");
+            valid_directions += "Left ";
+            // read option right
+          }
+          document.getElementById("prompt").innerHTML = valid_directions;
+          break;
+        case "left":
+          if (node.mapu != null) {
+            readText("Right");
+            valid_directions += "Right ";
+            // read option up
+          }
+          if (node.mapd != null) {
+            readText("Left");
+            valid_directions += "Left ";
+            // read option down
+          }
+          if (node.mapl != null) {
+            readText("Forward");
+            valid_directions += "Forward ";
+            // read option left
+          }
+          if (node.mapr != null) {
+            readText("Back");
+            valid_directions += "Back ";
+            // read option right
+          }
+          document.getElementById("prompt").innerHTML = valid_directions;
+          break;
+        case "right":
+          if (node.mapu != null) {
+            readText("Left");
+            valid_directions += "Left "; // read option up
+          }
+          if (node.mapd != null) {
+            readText("Right");
+            valid_directions += "Right ";
+            // read option down
+          }
+          if (node.mapl != null) {
+            readText("Back");
+            valid_directions += "Back ";
+            // read option left
+          }
+          if (node.mapr != null) {
+            readText("Forward");
+            valid_directions += "Forward ";
+            // read option right
+          }
+          document.getElementById("prompt").innerHTML = valid_directions;
+          break;
+      }
+    };
+  };
 }
 
 function takeInstruction(node, next_direction, person) {
@@ -330,8 +553,3 @@ function takeInstruction(node, next_direction, person) {
       }
   }
 }
-
-// function readText(text) {
-//   // console.log(text);
-//   // read text to user
-// }
