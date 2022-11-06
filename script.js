@@ -49,7 +49,7 @@ function mystart() {
   synth = window.speechSynthesis;
   synth.cancel();
   voices = synth.getVoices();
-  experience();
+  start_experience();
 }
 
 function sleep(ms) {
@@ -89,7 +89,15 @@ function readText(newText) {
   console.log(access_counter);
 }
 
-function recognizeSpeech(recognition, diagnostic, bg, options) {
+function dictation(
+  recognition, // 1
+  diagnostic, // 2
+  bg, // 3
+  options, // 4
+  node, // 5
+  person, // 6
+  isLocation // 7
+) {
   console.log("dictation started...");
   recognition.start();
 
@@ -104,7 +112,10 @@ function recognizeSpeech(recognition, diagnostic, bg, options) {
     console.log(`result: ${event.results[0][0]}`);
     for (var i = 0; i < options.length; i++) {
       if (options[i] == option_inputted) {
-        return options[i];
+        if (isLocation) {
+          evaluate_option_start(node, person);
+        }
+        evaluate_option(options[i], node, person);
       }
     }
   };
@@ -115,31 +126,28 @@ function recognizeSpeech(recognition, diagnostic, bg, options) {
 
   recognition.onnomatch = () => {
     recognizeSpeech();
-    speechRecognition(options);
+    speechRecognition(options, node, person, isLocation);
   };
 
   recognition.onerror = (event) => {
     diagnostic.textContent = `Error: ${event.error}`;
-    speechRecognition(
-      options,
-      recognizeSpeech(recognition, diagnostic, bg, options)
-    );
+    speechRecognition(options, node, person, isLocation);
   };
 }
 
-const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
-const SpeechRecognitionEvent =
-  window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
-
-const recognition = new SpeechRecognition();
-const speechRecognitionList = new SpeechGrammarList();
-
-const diagnostic = document.getElementById("diagnostic");
-const bg = document.querySelector("html");
-
-function speechRecognition(current_options, _callback) {
+function speechRecognition(current_options, node, person, isLocation) {
   var recognitions = 0;
+
+  const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+  const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
+  const SpeechRecognitionEvent =
+    window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
+  const recognition = new SpeechRecognition();
+  const speechRecognitionList = new SpeechGrammarList();
+
+  const diagnostic = document.getElementById("diagnostic");
+  const bg = document.querySelector("html");
 
   const options = current_options;
 
@@ -158,42 +166,42 @@ function speechRecognition(current_options, _callback) {
   document.getElementById("mic").onclick = () => {
     if (recognitions == 0) {
       recognitions++;
-      return _callback(recognition, diagnostic, bg, options);
+      return dictation(
+        recognition, // 1
+        diagnostic, // 2
+        bg, // 3
+        options, // 4
+        node, // 5
+        person, // 6
+        isLocation // 7
+      );
     }
   };
 }
 
-function experience() {
+function start_experience() {
   readText("");
-  let options = ["lafferre hall", "lafferre", "laughrey"];
-  var location_choice = speechRecognition(
-    options,
-    recognizeSpeech(recognition, diagnostic, bg, options)
-  );
-  console.log("***:", location_choice);
-  // while (location_choice == undefined) {
-  //   speechRecognition(options);
-  // }
-
-  //var node = roots["lafferre"];
   var node = root;
-  // var node = new Node("the main entrance.", null, null, null, null);
-  console.dir(root);
   var person = new Person();
-  options = ["left", "right", "forward", "back", "leave"];
-  while (true) {
-    console.dir(node);
-    giveInstructions(node, person);
-    var next_direction = speechRecognition(options);
-    if (next_direction === "leave") {
-      endTour();
-      break;
-    }
-    node = takeInstruction(node, next_direction, person);
-  }
-  //var prompt = document.getElementById("prompt");
-  //prompt.setAttribute("attribute", "");
-  options = ["go left", "go right", "go forward", "go backward"];
+  let options = ["lafferre hall", "lafferre", "laughrey"];
+  speechRecognition(options, node, person, true);
 }
 
-console.dir(root);
+function evaluate_option_start(node, person) {
+  giveInstructions(node, person);
+  prompt_option(node, person);
+}
+
+function prompt_option(node, person) {
+  options = ["left", "right", "forward", "back", "leave"];
+  speechRecognition(options, node, person, false);
+}
+
+function evaluate_option(direction_chosen, node, person) {
+  if (direction_chosen == "leave") {
+    start_experience();
+  }
+  node = takeInstruction(node, direction_chosen, person);
+  giveInstructions(node, person);
+  prompt_option(node, person);
+}
