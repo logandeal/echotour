@@ -171,6 +171,7 @@ function experience() {
   var person = new Person();
   options = ["left", "right", "forward", "back", "leave"];
   while (true) {
+    console.dir(node);
     giveInstructions(node, person);
     var next_direction = speechRecognition(options);
     if (next_direction === "leave") {
