@@ -22,7 +22,6 @@ class Node {
         this.mapl = node;
         node.mapr = this;
     }
-    
 }
 //declaring nodes
 var root = new Node("In front of you is the main entrance");
@@ -61,3 +60,63 @@ node6.addUp(node5);
 node7.addDown(node3);
 
 node8.addRight(node2);
+
+function giveInstructions(node, facing_direction) {
+    readText(node.description);
+    readText("Here are the directions you may move");
+    switch (facing_direction) {
+        case: "up"
+            if (node.mapu != null) readText("Forward"); // read option up
+            if (node.mapd != null) readText("Back"); // read option down
+            if (node.mapl != null) readText("Left"); // read option left
+            if (node.mapr != null) readText("Right"); // read option right
+            break;
+        case: "down"
+            if (node.mapu != null) readText("Back"); // read option up
+            if (node.mapd != null) readText("Forward"); // read option down
+            if (node.mapl != null) readText("Right"); // read option left
+            if (node.mapr != null) readText("Left"); // read option right
+            break;
+        case: "left"
+            if (node.mapu != null) readText("Right"); // read option up
+            if (node.mapd != null) readText("Left"); // read option down
+            if (node.mapl != null) readText("Forward"); // read option left
+            if (node.mapr != null) readText("Back"); // read option right
+            break;
+        case: "right"
+            if (node.mapu != null) readText("Left"); // read option up
+            if (node.mapd != null) readText("Right"); // read option down
+            if (node.mapl != null) readText("Back"); // read option left
+            if (node.mapr != null) readText("Forward"); // read option right
+            break;
+    }
+}
+
+function takeInstruction(node, next_direction, facing_direction) {
+    switch (next_direction) {
+        case: "forward"
+            if (facing_direction === "up") return node.mapu;
+            else if (facing_direction === "down") return node.mapd;
+            else if (facing_direction === "left") return node.mapl;
+            else return node.mapr;
+        case: "back"
+            if (facing_direction === "up") return node.mapd;
+            else if (facing_direction === "down") return node.mapu;
+            else if (facing_direction === "left") return node.mapr;
+            else return node.mapl;
+        case: "left"
+            if (facing_direction === "up") return node.mapl;
+            else if (facing_direction === "down") return node.mapr;
+            else if (facing_direction === "left") return node.mapd;
+            else return node.mapu;
+        case: "right"
+            if (facing_direction === "up") return node.mapr;
+            else if (facing_direction === "down") return node.mapl;
+            else if (facing_direction === "left") return node.mapu;
+            else return node.mapd;
+    }
+}
+
+function readText(text) {
+    // read text to user
+}
