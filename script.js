@@ -1,19 +1,55 @@
-const synth = window.speechSynthesis;
-
-voices = synth.getVoices();
+// Not on refresh
+// Not working on first load
 
 var access_counter = 0;
 
-document.addEventListener(
-  "DOMContentLoaded",
-  function () {
-    console.log("Hello");
-    if (access_counter == 0) {
-      start();
-    }
-  },
-  false
-);
+var synth;
+var voices;
+
+// window.onload = function () {
+//   if (first_load) {
+//     return;
+//   }
+//   var reloading = sessionStorage.getItem("reloading");
+//   if (reloading) {
+//     sessionStorage.removeItem("reloading");
+//     mystart();
+//   }
+// };
+
+// function reloadP() {
+//   sessionStorage.setItem("reloading", "true");
+//   document.location.reload();
+// }
+
+// document.addEventListener(
+//   "DOMContentLoaded",
+//   function () {
+//     first_load = false;
+//     synth = window.speechSynthesis;
+//     synth.cancel();
+//     voices = synth.getVoices();
+//     console.log(access_counter);
+//     if (access_counter == 0) {
+//       reloadP();
+//     }
+//   },
+//   false
+// );
+
+function mystart() {
+  if (access_counter != 0) {
+    return;
+  }
+  access_counter++;
+  const main_button = document.getElementById("mic");
+  main_button.src = "mic.png";
+  main_button.removeAttribute("onclick");
+  synth = window.speechSynthesis;
+  synth.cancel();
+  voices = synth.getVoices();
+  experience();
+}
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -58,7 +94,7 @@ function recognizeSpeech(recognition, diagnostic, bg) {
     if (option == "laughrey") {
       option = "lafferre";
     }
-    diagnostic.textContent = `Result received: ${option}.`;
+    diagnostic.textContent = `Result: ${option}.`;
     console.log("dictation started...");
     console.log(`Confidence: ${event.results[0][0].confidence}`);
     console.log(`result: ${event.results[0][0]}`);
@@ -114,8 +150,7 @@ function speechRecognition(current_options) {
   };
 }
 
-function start() {
-  access_counter++;
+function experience() {
   readText();
   let options = ["lafferre hall", "lafferre", "laughrey"];
   speechRecognition(options);
