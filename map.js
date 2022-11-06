@@ -1,6 +1,9 @@
 class Node {
-    constructor(description) {
-        this.description = description;
+    constructor(upDesc, rightDesc, leftDesc, downDesc) {
+        this.upDesc = upDesc;
+        this.rightDesc = rightDesc;
+        this.leftDesc = leftDesc;
+        this.downDesc = downDesc;
         this.mapu = null;
         this.mapd = null;
         this.mapr = null;
@@ -23,24 +26,39 @@ class Node {
         node.mapr = this;
     }
 }
+
+class Person {
+    constructor(){
+        this.direction = "up";
+    }
+    getDirection() {
+        return this.direction;
+    }
+}
+
 //declaring nodes
-var root = new Node("In front of you is the main entrance");
-var node2 = new Node("In front of you is a staircase with 12 steps going down. To your left is potential energy cafe. To your right is a hall that leads to the Interactive digital environments lab, E1419 Auditorium, and Mechanical and Aerospace.");
-var node3 = new Node("In front of you is a long hallway that leads to the west wing and labs C1201 - C1206. To your left is a hallway that leads to the east wing, Overholser Atrium, labs C1243 - C1246, and labs C1249 - C1251");
-var node4 = new Node("To your right is a hallway that leads to labs C1243 - C1246, Overholser Atrium, and Labs W1065 - W1081. To your left is a hallway that leads to restrooms, an elevator, civil and environment, and labs C1249 - C1251");
-var node5 = new Node("In front of you is a hallway that leads to the interactive digital environments lab and an exit to the north.");
-var node6 = new Node("To your left is a hallway that leads to labs E1411, E1413, E1414, and mechanical and aerospace. To your right is a womens restroom and labs E1403 and E1404.");
-var node7 = new Node("In front of you is a hallway that leads to an elevator, restrooms, ketchum auditorium, student services, and administration - deans office. To your left is a hallway that leads to bas W1065 - W1081, and an exit to the south. To your right is a hallway that leads to labs C1201 - C1204.");
-var node8 = new Node("This is Potential Energy Cafe! You can buy coffee and snacks!");
-var node9 = new Node("Here there are restrooms, an elevator, labs C1219-C1215 and an exit to the north courtyard");
-var node10 = new Node("To the right of you is a hallway that leads to restrooms, an elevator, civil and environmental, and labs C1249 - C1246");
-var node11 = new Node("To your right are labs C1249 - C1251. To your left is civil and environmental");
-var node12 = new Node("This is Civil and Environmental. In front of you is the room where we made this video tour!");
-var node13 = new Node("To your left is an exit. In front of you is the west wing.");
-var node14 = new Node("In front of you leads to W1065 - W1081. To your right leads to W1065 - W1081. This is because you can access the classrooms from both sides of the hall. To your left is an exit.");
-var node15 = new Node("To the right leads to W1065 - W1081. Going down leads to labs C1249 - C1251");
-var node16 = new Node("Going up leads to W1065 - W1081, an exit, and the adiministration / Dean's office. Going right leads to W1065 - W1081. Going left leads to labs C1249 - C1251.");
-var node17 = new Node("Going forward leads to W1065 - W1081. Going right leads to C1249 - C1251. Going left leads to the administration / Dean's office.");
+var root = new Node("the main entrance.", null, null, null);
+var node2 = new Node("a staircase with 12 steps going down.", "a hall that leads to the Interactive digital environments lab, E1419 Auditorium, and Mechanical and Aerospace.", "potential energy cafe.", "the front entrance.");
+var node3 = new Node("a long hallway that leads to the west wing and labs C1201 - C1206.", "an elevator, restrooms, labs C1210 - C1215, and an exit to the north couryard.", "a hallway that leads to the east wing, Overholser Atrium, labs C1243 - C1246, and labs C1249 - C1251.", "stairs with 12 steps leading up to potential energy cafe and the main entrance");
+var node4 = new Node("a hallway that leads to labs C1243 - C1246, Overholser Atrium, and Labs W1065 - W1081.", "a hallway that leads to the main entrance.", null, "a hallway that leads to restrooms, an elevator, the Civil and Environmental area, and labs C1249 - C1251");
+var node5 = new Node(null, "a hallway that leads to the interactive digital environments lab and an exit.", "a path that leads to the main entrance", "a hallway that leads to the mechanical and aerospace area and labs E1403, E1404, E1411, E1413, and E1414.");
+var node6 = new Node("a hall that leads to the interactive digital environments lab and the main entrance", "is a hallway that leads to labs E1411, E1413, E1414, and mechanical and aerospace.", "a womens restroom and labs E1403 and E1404.", null);
+var node7 = new Node("a hallway that leads to an elevator, restrooms, ketchum auditorium, student services, and administration - deans office.", "a hallway that leads to labs C1201 - C1204.", "a hallway that leads to bas W1065 - W1081, and an exit.", "a hallway that leads to the main entrance.");
+//"This is Potential Energy Cafe! You can buy coffee and snacks!"
+var node8 = new Node(null, "an area next to the main entrance or deeper into the building.", null, null);
+//Here there are restrooms, an elevator, labs C1210-C1215 and an exit to the north courtyard
+//maybe change left text
+var node9 = new Node(null, null, "the central hallway", null);
+var node10 = new Node("a hallway that leads to labs C1243 - C1246.", null, "a hallway that leads to restrooms, an elevator, the Civil and Environmental area, and labs C1249 - C1246", null);
+var node11 = new Node("labs C1249 - C1251.", null, null, "the Civil and Environmental area");
+//"This is the Civil and Environmental area. In front of you is the room where we made this video tour!"
+var node12 = new Node("a hallway that leads to labs C1249 - C1251 and restrooms.", null, null, null);
+var node13 = new Node("the west wing", null, "an exit.", null);
+// This is because you can access the classrooms from both sides of the hall.
+var node14 = new Node("a hall that leads to W1065 - W1081.", "a hall that leads to W1065 - W1081.", "an exit.", "labs C1249 - C1251");
+var node15 = new Node(null, "classrooms W1065 - W1081.", null, "path that leads to labs C1249 - C1251");
+var node16 = new Node("classrooms W1065 - W1081, an exit, and the adiministration / Dean's office.", "classrooms W1065 - W1081.", "labs C1249 - C1251.");
+var node17 = new Node("the administration / Dean's office.", "classrooms W1065 - W1081.", "labs C1249 - C1251.", "labs C1249 - C1251.");
 
 //adding directions to nodes
 root.addUp(node2);
@@ -99,10 +117,73 @@ node17.addLeft(node15);
 node17.addDown(node16);
 
 
-function giveInstructions(node, facing_direction) {
-    readText(node.description);
+function giveInstructions(node, person) {
+    currentString = "";
+    switch(person.direction){
+        case "up":{
+            if(node.upDesc != null){
+                currentString += "In front of you is " + node.upDesc + " ";
+            }
+            if(node.rightDesc != null){
+                currentString += "To your right is " + node.rightDesc + " ";
+            }
+            if(node.leftDesc != null){
+                currentString += "To your left is " + node.leftDesc + " ";
+            }
+            if(node.downDesc != null){
+                currentString += "Behind you is " + node.downDesc + " ";
+            }
+            break;
+        }
+        case "down":{
+            if(node.downDesc != null){
+                currentString += "In front of you is " + node.upDesc + " ";
+            }
+            if(node.leftDesc != null){
+                currentString += "To your right is " + node.rightDesc + " ";
+            }
+            if(node.rightDesc != null){
+                currentString += "To your left is " + node.leftDesc + " ";
+            }
+            if(node.upDesc != null){
+                currentString += "Behind you is " + node.downDesc + " ";
+            }
+            break;
+        }
+        case "right":{
+            if(node.rightDesc != null){
+                currentString += "In front of you is " + node.upDesc + " ";
+            }
+            if(node.downDesc != null){
+                currentString += "To your right is " + node.rightDesc + " ";
+            }
+            if(node.upDesc != null){
+                currentString += "To your left is " + node.leftDesc + " ";
+            }
+            if(node.leftDesc != null){
+                currentString += "Behind you is " + node.downDesc + " ";
+            }
+            break;
+        }
+        case "left":{
+            if(node.leftDesc != null){
+                currentString += "In front of you is " + node.upDesc + " ";
+            }
+            if(node.upDesc != null){
+                currentString += "To your right is " + node.rightDesc + " ";
+            }
+            if(node.downDesc != null){
+                currentString += "To your left is " + node.leftDesc + " ";
+            }
+            if(node.rightDesc != null){
+                currentString += "Behind you is " + node.downDesc + " ";
+            }
+            break;
+        }
+    }
+    readText(currentString);
     readText("Here are the directions you may move");
-    switch (facing_direction) {
+    switch (person.direction) {
         case "up":
             if (node.mapu != null) readText("Forward"); // read option up
             if (node.mapd != null) readText("Back"); // read option down
@@ -130,28 +211,76 @@ function giveInstructions(node, facing_direction) {
     }
 }
 
-function takeInstruction(node, next_direction, facing_direction) {
+function takeInstruction(node, next_direction, person) {
     switch (next_direction) {
         case "forward":
-            if (facing_direction === "up") return node.mapu;
-            else if (facing_direction === "down") return node.mapd;
-            else if (facing_direction === "left") return node.mapl;
-            else return node.mapr;
+            if (person.direction === "up"){
+                person.direction = "up";
+                return node.mapu;
+            }
+            else if (person.direction === "down"){
+                person.direction = "up";
+                return node.mapd;
+            }
+            else if (person.direction === "left"){
+                person.direction = "up";
+                return node.mapl;
+            }
+            else{
+                person.direction = "up";
+                return node.mapr;
+            }
         case "back":
-            if (facing_direction === "up") return node.mapd;
-            else if (facing_direction === "down") return node.mapu;
-            else if (facing_direction === "left") return node.mapr;
-            else return node.mapl;
+            if (person.direction === "up"){
+                person.direction = "down";
+                return node.mapd;
+            }
+            else if (person.direction === "down"){
+                person.direction = "down";
+                return node.mapu;
+            }
+            else if (person.direction === "left"){
+                person.direction = "down";
+                return node.mapr;
+            }
+            else{
+                person.direction = "down";
+                return node.mapl;
+            }
         case "left":
-            if (facing_direction === "up") return node.mapl;
-            else if (facing_direction === "down") return node.mapr;
-            else if (facing_direction === "left") return node.mapd;
-            else return node.mapu;
+            if (person.direction === "up"){
+                person.direction = "left";
+                return node.mapl;
+            }
+            else if (person.direction === "down"){
+                person.direction = "left";
+                return node.mapr;
+            }
+            else if (person.direction === "left"){
+                person.direction = "left";
+                return node.mapd;
+            }
+            else{
+                person.direction = "left";
+                return node.mapu;
+            }
         case "right":
-            if (facing_direction === "up") return node.mapr;
-            else if (facing_direction === "down") return node.mapl;
-            else if (facing_direction === "left") return node.mapu;
-            else return node.mapd;
+            if (person.direction === "up"){
+                person.direction = "right";
+                return node.mapr;
+            }
+            else if (person.direction === "down"){
+                person.direction = "right";
+                return node.mapl;
+            }
+            else if (person.direction === "left"){
+                person.direction = "right";
+                return node.mapu;
+            }
+            else {
+                person.direction = "right";
+                return node.mapd;
+            }
     }
 }
 
