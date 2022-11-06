@@ -155,7 +155,7 @@ function speechRecognition(current_options) {
   document.getElementById("mic").onclick = () => {
     if (recognitions == 0) {
       recognitions++;
-      recognizeSpeech(recognition, diagnostic, bg, options);
+      return recognizeSpeech(recognition, diagnostic, bg, options);
     }
   };
 }
