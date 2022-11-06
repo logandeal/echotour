@@ -166,7 +166,7 @@ function experience() {
   speechRecognition(options);
   //var node = roots["lafferre"];
   //var node = root;
-  var node = newNode("the main entrance.", null, null, null);
+  var node = newNode("the main entrance.", null, null, null, null);
   var person = new Person();
   options = ["left", "right", "forward", "back", "leave"];
   while (true) {
