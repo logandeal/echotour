@@ -118,6 +118,7 @@ function dictation(
         evaluate_option(options[i], node, person);
       }
     }
+    speechRecognition(options, node, person, isLocation);
   };
 
   recognition.onspeechend = () => {
