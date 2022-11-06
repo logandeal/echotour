@@ -2,10 +2,14 @@ const synth = window.speechSynthesis;
 
 voices = synth.getVoices();
 
-window.onload = () => start();
+let access_counter = 0;
+
+window.onload = function () {
+  if (access_counter == 0) start();
+  access_counter++;
+};
 
 function readText() {
-  console.log(document.getElementById("prompt"));
   const promptTxt = document.getElementById("prompt").textContent;
   console.log(promptTxt);
 
