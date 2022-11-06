@@ -38,7 +38,7 @@ class Person {
 
 //declaring nodes
 var root = new Node("the main entrance.", null, null, null, null);
-var node2 = new Node("a staircase with 12 steps going down.", "a hall that leads to the Interactive digital environments lab, E1419 Auditorium, and Mechanical and Aerospace.", "potential energy cafe.", "the front entrance.", "In this area there is a study area with couches, chairs, tables, and a counter!");
+var node2 = new Node("a staircase with 12 steps.", "a hall that leads to the Interactive digital environments lab, E1419 Auditorium, and Mechanical and Aerospace.", "potential energy cafe.", "the front entrance.", "In this area there is a study area with couches, chairs, tables, and a counter!");
 var node3 = new Node("the main hallway that leads to the west wing and labs C1201 - C1206.", "an elevator, restrooms, labs C1210 - C1215, and an exit to the north couryard.", "a hallway that leads to the east wing, Overholser Atrium, labs C1243 - C1246, and labs C1249 - C1251.", "stairs with 12 steps leading up to potential energy cafe and the main entrance", "This is the portion of the main hallway closest to the entrance.");
 var node4 = new Node("a hallway that leads to labs C1243 - C1246, Overholser Atrium, and Labs W1065 - W1081.", "a hallway that leads to the main entrance.", null, "a hallway that leads to restrooms, an elevator, the Civil and Environmental area, and labs C1249 - C1251", null);
 var node5 = new Node(null, "a hallway that leads to the interactive digital environments lab and an exit.", "a path that leads to the main entrance", "a hallway that leads to the mechanical and aerospace area and labs E1403, E1404, E1411, E1413, and E1414.", null);
