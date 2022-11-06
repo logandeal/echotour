@@ -43,11 +43,11 @@ function recognizeSpeech(recognition, diagnostic, bg) {
 
   recognition.onspeechend = () => {
     recognition.stop();
-    speechRecognition(options);
   };
 
   recognition.onnomatch = () => {
     recognizeSpeech();
+    speechRecognition(options);
   };
 
   recognition.onerror = (event) => {
