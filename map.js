@@ -118,5 +118,5 @@ function takeInstruction(node, next_direction, facing_direction) {
 }
 
 function readText(text) {
-    // read text to user
+    
 }
