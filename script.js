@@ -66,7 +66,6 @@ function readText() {
   synth.speak(utterThis);
   console.log(access_counter);
 }
-<<<<<<< Updated upstream
 
 function recognizeSpeech(recognition, diagnostic, bg) {
   console.log("dictation started...");
@@ -87,37 +86,6 @@ function recognizeSpeech(recognition, diagnostic, bg) {
     recognition.stop();
   };
 
-=======
-
-<<<<<<< HEAD
-  console.log("Done!");
-
-  utterThis.onpause = (event) => {
-    const char = event.utterance.text.charAt(event.charIndex);
-    console.log(
-      `Speech paused at character ${event.charIndex} of "${event.utterance.text}", which is "${char}".`
-    );
-=======
-function recognizeSpeech(recognition, diagnostic, bg) {
-  console.log("dictation started...");
-  recognition.start();
-
-  recognition.onresult = (event) => {
-    let option = event.results[0][0].transcript;
-    if (option == "laughrey") {
-      option = "lafferre";
-    }
-    diagnostic.textContent = `Result received: ${option}.`;
-    console.log("dictation started...");
-    console.log(`Confidence: ${event.results[0][0].confidence}`);
-    console.log(`result: ${event.results[0][0]}`);
-  };
-
-  recognition.onspeechend = () => {
-    recognition.stop();
-  };
-
->>>>>>> Stashed changes
   recognition.onnomatch = () => {
     recognizeSpeech();
     speechRecognition(options);
@@ -126,10 +94,6 @@ function recognizeSpeech(recognition, diagnostic, bg) {
   recognition.onerror = (event) => {
     diagnostic.textContent = `Error occurred in recognition: ${event.error}`;
     speechRecognition(options);
-<<<<<<< Updated upstream
-=======
->>>>>>> fbb7615fc71c6f1fe2e4e1eef893976ec62327c8
->>>>>>> Stashed changes
   };
 }
 
