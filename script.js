@@ -34,7 +34,10 @@ function recognizeSpeech(recognition, diagnostic, bg) {
   recognition.start();
 
   recognition.onresult = (event) => {
-    const option = event.results[0][0].transcript;
+    let option = event.results[0][0].transcript;
+    if (option == "laughrey") {
+      option = "lafferre";
+    }
     diagnostic.textContent = `Result received: ${option}.`;
     console.log("dictation started...");
     console.log(`Confidence: ${event.results[0][0].confidence}`);
@@ -96,7 +99,7 @@ function start() {
   readText();
   let options = ["lafferre hall", "lafferre", "laughrey"];
   speechRecognition(options);
-  //
+  options = ["left", "right", "forward", "back"];
   //var prompt = document.getElementById("prompt");
   //prompt.setAttribute("attribute", "");
   options = ["go left", "go right", "go forward", "go backward"];
