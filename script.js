@@ -165,8 +165,9 @@ function experience() {
   let options = ["lafferre hall", "lafferre", "laughrey"];
   speechRecognition(options);
   //var node = roots["lafferre"];
-  //var node = root;
-  var node = new Node("the main entrance.", null, null, null, null);
+  var node = root;
+  // var node = new Node("the main entrance.", null, null, null, null);
+  console.dir(root);
   var person = new Person();
   options = ["left", "right", "forward", "back", "leave"];
   while (true) {
@@ -182,3 +183,5 @@ function experience() {
   //prompt.setAttribute("attribute", "");
   options = ["go left", "go right", "go forward", "go backward"];
 }
+
+console.dir(root);
