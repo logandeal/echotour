@@ -1,3 +1,23 @@
+const synth = window.speechSynthesis;
+
+voices = synth.getVoices();
+
+var access_counter = 0;
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+    console.log("Hello");
+    if (access_counter == 0) {
+      start();
+    }
+  },
+  false
+);
+
+function readText() {
+  var uttered = 0;
+
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
@@ -39,34 +59,86 @@ function readText() {
   console.log(promptTxt);
 
   const utterThis = new SpeechSynthesisUtterance(promptTxt);
+  console.log(utterThis);
   utterThis.voice = voices[0];
   utterThis.pitch = 1;
   utterThis.rate = 1.3;
   synth.speak(utterThis);
+  console.log(access_counter);
+}
 
-  utterThis.onpause = (event) => {
-    const char = event.utterance.text.charAt(event.charIndex);
-    console.log(
-      `Speech paused at character ${event.charIndex} of "${event.utterance.text}", which is "${char}".`
-    );
+function recognizeSpeech(recognition, diagnostic, bg) {
+  console.log("dictation started...");
+  recognition.start();
+
+  recognition.onresult = (event) => {
+    let option = event.results[0][0].transcript;
+    if (option == "laughrey") {
+      option = "lafferre";
+    }
+    diagnostic.textContent = `Result received: ${option}.`;
+    console.log("dictation started...");
+    console.log(`Confidence: ${event.results[0][0].confidence}`);
+    console.log(`result: ${event.results[0][0]}`);
+  };
+
+  recognition.onspeechend = () => {
+    recognition.stop();
+  };
+
+  recognition.onnomatch = () => {
+    recognizeSpeech();
+    speechRecognition(options);
+  };
+
+  recognition.onerror = (event) => {
+    diagnostic.textContent = `Error occurred in recognition: ${event.error}`;
+    speechRecognition(options);
   };
 }
 
-function recognizeSpeech() {
-  console.log("dictation started...");
-}
+function speechRecognition(current_options) {
+  var recognitions = 0;
+  const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+  const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
+  const SpeechRecognitionEvent =
+    window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
-function startRead() {
-  console.log("reading...");
-  readText();
-  // loop changePrompt
-}
+  const options = current_options;
 
-function startRecognition() {
-  document.getElementById("mic").onclick = () => recognizeSpeech();
+  const grammar = `#JSGF V1.0; grammar options; public <option> = ${options.join(
+    " | "
+  )};`;
+
+  const recognition = new SpeechRecognition();
+  const speechRecognitionList = new SpeechGrammarList();
+
+  speechRecognitionList.addFromString(grammar, 1);
+
+  recognition.grammars = speechRecognitionList;
+  recognition.continuous = false;
+  recognition.lang = "en-US";
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  const diagnostic = document.getElementById("diagnostic");
+  const bg = document.querySelector("html");
+
+  document.getElementById("mic").onclick = () => {
+    if (recognitions == 0) {
+      recognitions++;
+      recognizeSpeech(recognition, diagnostic, bg);
+    }
+  };
 }
 
 function start() {
-  startRead();
-  startRecognition();
+  access_counter++;
+  readText();
+  let options = ["lafferre hall", "lafferre", "laughrey"];
+  speechRecognition(options);
+  options = ["left", "right", "forward", "back"];
+  //var prompt = document.getElementById("prompt");
+  //prompt.setAttribute("attribute", "");
+  options = ["go left", "go right", "go forward", "go backward"];
 }
