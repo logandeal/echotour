@@ -116,9 +116,12 @@ function dictation(
     for (var i = 0; i < options.length; i++) {
       if (options[i] == option_inputted) {
         if (isLocation) {
+          console.log("if in for loop");
           evaluate_option_start(node, person);
         }
-        evaluate_option(options[i], node, person);
+        console.log("for loop");
+        node = evaluate_option(options[i], node, person);
+        console.dir(node);
       }
     }
     speechRecognition(options, node, person, isLocation);
@@ -197,18 +200,22 @@ function evaluate_option_start(node, person) {
 }
 
 function prompt_option(node, person) {
+  console.dir(node);
   options = ["left", "right", "forward", "back", "leave"];
   speechRecognition(options, node, person, false);
+  console.dir(node);
 }
 
 function evaluate_option(direction_chosen, node, person) {
-  if (direction_chosen == "leave") {
+  if (direction_chosen === "leave") {
     readText("Thank you for touring lafferre!");
     return;
   }
   new_node = takeInstruction(node, direction_chosen, person);
+  console.dir(new_node);
   giveInstructions(new_node, person);
   prompt_option(new_node, person);
+  return new_node;
 }
 
 // Tell user bad input
