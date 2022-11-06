@@ -4,6 +4,7 @@ voices = synth.getVoices();
 
 let access_counter = 0;
 
+// 1: start functionality
 window.onload = function () {
   if (access_counter == 0) start();
   access_counter++;
@@ -32,7 +33,7 @@ function changePrompt() {
   // call readText
 }
 
-function recognizeSpeech1() {
+function recognizeSpeech1(recognition, diagnostic, bg) {
   console.log("dictation started...");
   recognition.start();
 
@@ -71,7 +72,7 @@ function startRecognition() {
 
   const locations = ["lafferre hall", "lafferre"];
 
-  const grammar = `#JSGF V1.0; grammar locations; public <option> = ${locations.join(
+  const grammar = `#JSGF V1.0; grammar locations; public <location> = ${locations.join(
     " | "
   )};`;
 
@@ -89,9 +90,11 @@ function startRecognition() {
   const diagnostic = document.querySelector(".output");
   const bg = document.querySelector("html");
 
-  document.getElementById("mic").onclick = () => recognizeSpeech1();
+  document.getElementById("mic").onclick = () =>
+    recognizeSpeech1(recognition, diagnostic, bg);
 }
 
+// 2: call begin read
 function start() {
   startRead();
   startRecognition();
