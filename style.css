@@ -1,35 +1,47 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto Mono');
+@import url("https://fonts.googleapis.com/css?family=Roboto Mono");
 
 body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: "Roboto Mono", monospace;
-    text-align: center;
-    padding: 10px;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
+  padding: 10px;
+  white-space: wrap;
 }
 
 span {
-    font-size: 48px;
+  font-size: 4vw;
 }
 
 p {
-    font-size: 48px;
-    margin-top: calc((100vh - 300px - 115px - 50px - 150px) / 2);
+  font-size: 4vw;
+  padding: auto;
+  margin-top: calc((100vh - 300px - 115px - 50px - 150px) / 2);
 }
 
 img {
-    width: 300px;
-    height: 300px;
-    position: fixed;
-    bottom: 30px;
-    left: calc((100vw - 300px) / 2);
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  max-height: 300px;
+  position: fixed;
+  bottom: 30px;
+  left: calc((100vw - 300px) / 2);
+}
 
+.main {
+  display: inline-flexbox;
+  justify-content: space-between;
 }
 
 .cyan {
-    color: #00a0a0;
+  color: #00a0a0;
 }
 
 .no-space {
-    margin-left: -8px;
+  margin-left: -8px;
 }
+
+/* #diagnostic {
+  color: #00a5a3;
+} */

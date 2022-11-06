@@ -300,4 +300,3 @@ function readText(text) {
    // console.log(text);
     // read text to user
 }
-
