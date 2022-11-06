@@ -77,7 +77,7 @@ function speechRecognition(current_options) {
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
-  const diagnostic = document.querySelector(".output");
+  const diagnostic = document.getElementById("diagnostic");
   const bg = document.querySelector("html");
 
   document.getElementById("mic").onclick = () =>
@@ -87,8 +87,7 @@ function speechRecognition(current_options) {
 function start() {
   access_counter++;
   readText();
-  access_counter++;
-  let options = ["lafferre hall", "lafferre"];
+  let options = ["lafferre hall", "lafferre", "laughrey"];
   speechRecognition(options);
   //
   //var prompt = document.getElementById("prompt");
