@@ -10,13 +10,13 @@ body {
 }
 
 span {
-  font-size: 4vw;
+  font-size: 48px;
 }
 
 p {
-  font-size: 4vw;
+  font-size: 48px;
   padding: auto;
-  margin-top: calc((100vh - 300px - 115px - 50px - 150px) / 2);
+  margin-top: calc((50vh - 300px) / 2);
 }
 
 img {
@@ -29,11 +29,6 @@ img {
   left: calc((100vw - 300px) / 2);
 }
 
-.main {
-  display: inline-flexbox;
-  justify-content: space-between;
-}
-
 .cyan {
   color: #00a0a0;
 }
@@ -41,7 +36,3 @@ img {
 .no-space {
   margin-left: -8px;
 }
-
-/* #diagnostic {
-  color: #00a5a3;
-} */
