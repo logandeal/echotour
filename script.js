@@ -57,6 +57,7 @@ function recognizeSpeech(recognition, diagnostic, bg) {
 }
 
 function speechRecognition(current_options) {
+  var recognitions = 0;
   const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
   const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
   const SpeechRecognitionEvent =
@@ -82,8 +83,12 @@ function speechRecognition(current_options) {
   const diagnostic = document.getElementById("diagnostic");
   const bg = document.querySelector("html");
 
-  document.getElementById("mic").onclick = () =>
-    recognizeSpeech(recognition, diagnostic, bg);
+  document.getElementById("mic").onclick = () => {
+    if (recognitions == 0) {
+      recognitions++;
+      recognizeSpeech(recognition, diagnostic, bg);
+    }
+  };
 }
 
 function start() {
