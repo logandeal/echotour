@@ -200,11 +200,12 @@ function prompt_option(node, person) {
 
 function evaluate_option(direction_chosen, node, person) {
   if (direction_chosen == "leave") {
-    start_experience();
+    read("Thank you for touring lafferre!");
+    return;
   }
-  node = takeInstruction(node, direction_chosen, person);
-  giveInstructions(node, person);
-  prompt_option(node, person);
+  new_node = takeInstruction(node, direction_chosen, person);
+  giveInstructions(new_node, person);
+  prompt_option(new_node, person);
 }
 
 // Tell user bad input
