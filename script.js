@@ -200,7 +200,7 @@ function prompt_option(node, person) {
 
 function evaluate_option(direction_chosen, node, person) {
   if (direction_chosen == "leave") {
-    read("Thank you for touring lafferre!");
+    readText("Thank you for touring lafferre!");
     return;
   }
   new_node = takeInstruction(node, direction_chosen, person);
