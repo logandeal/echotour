@@ -31,9 +31,6 @@ class Person {
     constructor(){
         this.direction = "up";
     }
-    getDirection() {
-        return this.direction;
-    }
 }
 
     //declaring nodes
