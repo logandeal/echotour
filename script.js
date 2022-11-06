@@ -1,5 +1,6 @@
-// Not on refresh
-// Not working on first load
+let roots = {};
+
+roots["lafferre"] = root;
 
 var access_counter = 0;
 
@@ -72,7 +73,10 @@ async function testColorChange() {
   toWhiteMic();
 }
 
-function readText() {
+function readText(newText) {
+  if (newText != "") {
+    document.getElementById("prompt").innerHTML = newText;
+  }
   const promptTxt = document.getElementById("prompt").textContent;
   console.log(promptTxt);
 
@@ -85,19 +89,25 @@ function readText() {
   console.log(access_counter);
 }
 
-function recognizeSpeech(recognition, diagnostic, bg) {
+function recognizeSpeech(recognition, diagnostic, bg, options) {
   console.log("dictation started...");
   recognition.start();
 
   recognition.onresult = (event) => {
-    let option = event.results[0][0].transcript;
-    if (option == "laughrey") {
-      option = "lafferre";
+    let option_inputted = event.results[0][0].transcript;
+    if (option_inputted == "laughrey") {
+      option_inputted = "lafferre";
     }
-    diagnostic.textContent = `Result: ${option}.`;
+    diagnostic.textContent = `Result: ${option_inputted}.`;
     console.log("dictation started...");
     console.log(`Confidence: ${event.results[0][0].confidence}`);
     console.log(`result: ${event.results[0][0]}`);
+    for (var i = 0; i < options.length; i++) {
+      if (options[i] == option_inputted) {
+        return options[i];
+      }
+    }
+    speechRecognition(options);
   };
 
   recognition.onspeechend = () => {
@@ -145,16 +155,27 @@ function speechRecognition(current_options) {
   document.getElementById("mic").onclick = () => {
     if (recognitions == 0) {
       recognitions++;
-      recognizeSpeech(recognition, diagnostic, bg);
+      recognizeSpeech(recognition, diagnostic, bg, options);
     }
   };
 }
 
 function experience() {
-  readText();
+  readText("");
   let options = ["lafferre hall", "lafferre", "laughrey"];
   speechRecognition(options);
-  options = ["left", "right", "forward", "back"];
+  var node = roots["lafferre"];
+  var person = new Person();
+  options = ["left", "right", "forward", "back", "leave"];
+  while (true) {
+    giveInstructions(node, person);
+    var next_direction = speechRecognition(options);
+    if (next_direction === "leave") {
+      endTour();
+      break;
+    }
+    node = takeInstruction(node, next_direction, person);
+  }
   //var prompt = document.getElementById("prompt");
   //prompt.setAttribute("attribute", "");
   options = ["go left", "go right", "go forward", "go backward"];
