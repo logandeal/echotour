@@ -107,7 +107,6 @@ function recognizeSpeech(recognition, diagnostic, bg, options) {
         return options[i];
       }
     }
-    speechRecognition(options);
   };
 
   recognition.onspeechend = () => {
@@ -121,25 +120,32 @@ function recognizeSpeech(recognition, diagnostic, bg, options) {
 
   recognition.onerror = (event) => {
     diagnostic.textContent = `Error: ${event.error}`;
-    speechRecognition(options);
+    speechRecognition(
+      options,
+      recognizeSpeech(recognition, diagnostic, bg, options)
+    );
   };
 }
 
-function speechRecognition(current_options) {
+const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
+const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
+const SpeechRecognitionEvent =
+  window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
+const recognition = new SpeechRecognition();
+const speechRecognitionList = new SpeechGrammarList();
+
+const diagnostic = document.getElementById("diagnostic");
+const bg = document.querySelector("html");
+
+function speechRecognition(current_options, _callback) {
   var recognitions = 0;
-  const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-  const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
-  const SpeechRecognitionEvent =
-    window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
   const options = current_options;
 
   const grammar = `#JSGF V1.0; grammar options; public <option> = ${options.join(
     " | "
   )};`;
-
-  const recognition = new SpeechRecognition();
-  const speechRecognitionList = new SpeechGrammarList();
 
   speechRecognitionList.addFromString(grammar, 1);
 
@@ -149,13 +155,10 @@ function speechRecognition(current_options) {
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
-  const diagnostic = document.getElementById("diagnostic");
-  const bg = document.querySelector("html");
-
   document.getElementById("mic").onclick = () => {
     if (recognitions == 0) {
       recognitions++;
-      return recognizeSpeech(recognition, diagnostic, bg, options);
+      return _callback(recognition, diagnostic, bg, options);
     }
   };
 }
@@ -163,7 +166,15 @@ function speechRecognition(current_options) {
 function experience() {
   readText("");
   let options = ["lafferre hall", "lafferre", "laughrey"];
-  speechRecognition(options);
+  var location_choice = speechRecognition(
+    options,
+    recognizeSpeech(recognition, diagnostic, bg, options)
+  );
+  console.log("***:", location_choice);
+  // while (location_choice == undefined) {
+  //   speechRecognition(options);
+  // }
+
   //var node = roots["lafferre"];
   var node = root;
   // var node = new Node("the main entrance.", null, null, null, null);
