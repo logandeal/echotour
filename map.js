@@ -275,13 +275,13 @@ function takeInstruction(node, next_direction, person) {
         person.direction = "up";
         return node.mapu;
       } else if (person.direction === "down") {
-        person.direction = "up";
+        person.direction = "down";
         return node.mapd;
       } else if (person.direction === "left") {
-        person.direction = "up";
+        person.direction = "left";
         return node.mapl;
       } else {
-        person.direction = "up";
+        person.direction = "right";
         return node.mapr;
       }
     case "back":
@@ -289,13 +289,13 @@ function takeInstruction(node, next_direction, person) {
         person.direction = "down";
         return node.mapd;
       } else if (person.direction === "down") {
-        person.direction = "down";
+        person.direction = "up";
         return node.mapu;
       } else if (person.direction === "left") {
-        person.direction = "down";
+        person.direction = "right";
         return node.mapr;
       } else {
-        person.direction = "down";
+        person.direction = "left";
         return node.mapl;
       }
     case "left":
@@ -303,13 +303,13 @@ function takeInstruction(node, next_direction, person) {
         person.direction = "left";
         return node.mapl;
       } else if (person.direction === "down") {
-        person.direction = "left";
+        person.direction = "right";
         return node.mapr;
       } else if (person.direction === "left") {
-        person.direction = "left";
+        person.direction = "down";
         return node.mapd;
       } else {
-        person.direction = "left";
+        person.direction = "up";
         return node.mapu;
       }
     case "right":
@@ -317,13 +317,13 @@ function takeInstruction(node, next_direction, person) {
         person.direction = "right";
         return node.mapr;
       } else if (person.direction === "down") {
-        person.direction = "right";
+        person.direction = "left";
         return node.mapl;
       } else if (person.direction === "left") {
-        person.direction = "right";
+        person.direction = "up";
         return node.mapu;
       } else {
-        person.direction = "right";
+        person.direction = "down";
         return node.mapd;
       }
   }
