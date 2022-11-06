@@ -103,7 +103,7 @@ function dictation(
 
   recognition.onresult = (event) => {
     let option_inputted = event.results[0][0].transcript;
-    if (option_inputted == "laughrey") {
+    if (option_inputted == "laughrey" || option_inputted == "laughing") {
       option_inputted = "lafferre";
     }
     diagnostic.textContent = `Result: ${option_inputted}.`;
@@ -206,3 +206,7 @@ function evaluate_option(direction_chosen, node, person) {
   giveInstructions(node, person);
   prompt_option(node, person);
 }
+
+// Tell user bad input
+// Update prompt
+// Make mic button legal
