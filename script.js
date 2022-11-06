@@ -77,9 +77,12 @@ function readText(newText) {
   if (newText != "") {
     document.getElementById("prompt").innerHTML = newText;
   }
-  const promptTxt = document.getElementById("prompt").textContent;
+  var promptTxt = document.getElementById("prompt").textContent;
   console.log(promptTxt);
 
+  if (promptTxt == "Thank you for touring lafferre!") {
+    promptTxt = "Thank you for touring laughrey!";
+  }
   const utterThis = new SpeechSynthesisUtterance(promptTxt);
   console.log(utterThis);
   utterThis.voice = voices[0];
