@@ -1,37 +1,37 @@
 class Node {
-    constructor(upDesc, rightDesc, leftDesc, downDesc, bonusContent) {
-        this.upDesc = upDesc;
-        this.rightDesc = rightDesc;
-        this.leftDesc = leftDesc;
-        this.downDesc = downDesc;
-        this.bonusContent = bonusContent;
-        this.mapu = null;
-        this.mapd = null;
-        this.mapr = null;
-        this.mapl = null;
-    }
-    addDown(node) {
-        this.mapd = node;
-        node.mapu = this;
-    }
-    addUp(node) {
-        this.mapu = node;
-        node.mapd = this;
-    }
-    addRight(node) {
-        this.mapr = node;
-        node.mapl = this;
-    }
-    addLeft(node) {
-        this.mapl = node;
-        node.mapr = this;
-    }
+  constructor(upDesc, rightDesc, leftDesc, downDesc, bonusContent) {
+    this.upDesc = upDesc;
+    this.rightDesc = rightDesc;
+    this.leftDesc = leftDesc;
+    this.downDesc = downDesc;
+    this.bonusContent = bonusContent;
+    this.mapu = null;
+    this.mapd = null;
+    this.mapr = null;
+    this.mapl = null;
+  }
+  addDown(node) {
+    this.mapd = node;
+    node.mapu = this;
+  }
+  addUp(node) {
+    this.mapu = node;
+    node.mapd = this;
+  }
+  addRight(node) {
+    this.mapr = node;
+    node.mapl = this;
+  }
+  addLeft(node) {
+    this.mapl = node;
+    node.mapr = this;
+  }
 }
 
 class Person {
-    constructor(){
-        this.direction = "up";
-    }
+  constructor() {
+    this.direction = "up";
+  }
 }
 
 //function veryCoolFunc(){
@@ -162,185 +162,174 @@ node27.addLeft(node6);
 //
 //}
 function giveInstructions(node, person) {
-    currentString = "";
-    switch(person.direction){
-        case "up":{
-            if(node.bonusContent != null){
-                currentString += node.bonusContent + " ";
-            }
-            if(node.upDesc != null){
-                currentString += "In front of you is " + node.upDesc + " ";
-            }
-            if(node.rightDesc != null){
-                currentString += "To your right is " + node.rightDesc + " ";
-            }
-            if(node.leftDesc != null){
-                currentString += "To your left is " + node.leftDesc + " ";
-            }
-            if(node.downDesc != null){
-                currentString += "Behind you is " + node.downDesc + " ";
-            }
-            break;
-        }
-        case "down":{
-            if(node.bonusContent != null){
-                currentString += node.bonusContent + " ";
-            }
-            if(node.downDesc != null){
-                currentString += "In front of you is " + node.downDesc + " ";
-            }
-            if(node.leftDesc != null){
-                currentString += "To your right is " + node.leftDesc + " ";
-            }
-            if(node.rightDesc != null){
-                currentString += "To your left is " + node.rightDesc + " ";
-            }
-            if(node.upDesc != null){
-                currentString += "Behind you is " + node.upDesc + " ";
-            }
-            break;
-        }
-        case "right":{
-            if(node.bonusContent != null){
-                currentString += node.bonusContent + " ";
-            }
-            if(node.rightDesc != null){
-                currentString += "In front of you is " + node.rightDesc + " ";
-            }
-            if(node.downDesc != null){
-                currentString += "To your right is " + node.downDesc + " ";
-            }
-            if(node.upDesc != null){
-                currentString += "To your left is " + node.upDesc + " ";
-            }
-            if(node.leftDesc != null){
-                currentString += "Behind you is " + node.leftDesc + " ";
-            }
-            break;
-        }
-        case "left":{
-            if(node.bonusContent != null){
-                currentString += node.bonusContent + " ";
-            }
-            if(node.leftDesc != null){
-                currentString += "In front of you is " + node.leftDesc + " ";
-            }
-            if(node.upDesc != null){
-                currentString += "To your right is " + node.upDesc + " ";
-            }
-            if(node.downDesc != null){
-                currentString += "To your left is " + node.downDesc + " ";
-            }
-            if(node.rightDesc != null){
-                currentString += "Behind you is " + node.rightDesc + " ";
-            }
-            break;
-        }
+  console.log(node);
+  currentString = "";
+  switch (person.direction) {
+    case "up": {
+      if (node.bonusContent != null) {
+        currentString += node.bonusContent + " ";
+      }
+      if (node.upDesc != null) {
+        currentString += "In front of you is " + node.upDesc + " ";
+      }
+      if (node.rightDesc != null) {
+        currentString += "To your right is " + node.rightDesc + " ";
+      }
+      if (node.leftDesc != null) {
+        currentString += "To your left is " + node.leftDesc + " ";
+      }
+      if (node.downDesc != null) {
+        currentString += "Behind you is " + node.downDesc + " ";
+      }
+      break;
     }
-    readText(currentString);
-    readText("Here are the directions you may move");
-    switch (person.direction) {
-        case "up":
-            if (node.mapu != null) readText("Forward"); // read option up
-            if (node.mapd != null) readText("Back"); // read option down
-            if (node.mapl != null) readText("Left"); // read option left
-            if (node.mapr != null) readText("Right"); // read option right
-            break;
-        case "down":
-            if (node.mapu != null) readText("Back"); // read option up
-            if (node.mapd != null) readText("Forward"); // read option down
-            if (node.mapl != null) readText("Right"); // read option left
-            if (node.mapr != null) readText("Left"); // read option right
-            break;
-        case "left":
-            if (node.mapu != null) readText("Right"); // read option up
-            if (node.mapd != null) readText("Left"); // read option down
-            if (node.mapl != null) readText("Forward"); // read option left
-            if (node.mapr != null) readText("Back"); // read option right
-            break;
-        case "right":
-            if (node.mapu != null) readText("Left"); // read option up
-            if (node.mapd != null) readText("Right"); // read option down
-            if (node.mapl != null) readText("Back"); // read option left
-            if (node.mapr != null) readText("Forward"); // read option right
-            break;
+    case "down": {
+      if (node.bonusContent != null) {
+        currentString += node.bonusContent + " ";
+      }
+      if (node.downDesc != null) {
+        currentString += "In front of you is " + node.downDesc + " ";
+      }
+      if (node.leftDesc != null) {
+        currentString += "To your right is " + node.leftDesc + " ";
+      }
+      if (node.rightDesc != null) {
+        currentString += "To your left is " + node.rightDesc + " ";
+      }
+      if (node.upDesc != null) {
+        currentString += "Behind you is " + node.upDesc + " ";
+      }
+      break;
     }
+    case "right": {
+      if (node.bonusContent != null) {
+        currentString += node.bonusContent + " ";
+      }
+      if (node.rightDesc != null) {
+        currentString += "In front of you is " + node.rightDesc + " ";
+      }
+      if (node.downDesc != null) {
+        currentString += "To your right is " + node.downDesc + " ";
+      }
+      if (node.upDesc != null) {
+        currentString += "To your left is " + node.upDesc + " ";
+      }
+      if (node.leftDesc != null) {
+        currentString += "Behind you is " + node.leftDesc + " ";
+      }
+      break;
+    }
+    case "left": {
+      if (node.bonusContent != null) {
+        currentString += node.bonusContent + " ";
+      }
+      if (node.leftDesc != null) {
+        currentString += "In front of you is " + node.leftDesc + " ";
+      }
+      if (node.upDesc != null) {
+        currentString += "To your right is " + node.upDesc + " ";
+      }
+      if (node.downDesc != null) {
+        currentString += "To your left is " + node.downDesc + " ";
+      }
+      if (node.rightDesc != null) {
+        currentString += "Behind you is " + node.rightDesc + " ";
+      }
+      break;
+    }
+  }
+  readText(currentString);
+  readText("Here are the directions you may move");
+  switch (person.direction) {
+    case "up":
+      if (node.mapu != null) readText("Forward"); // read option up
+      if (node.mapd != null) readText("Back"); // read option down
+      if (node.mapl != null) readText("Left"); // read option left
+      if (node.mapr != null) readText("Right"); // read option right
+      break;
+    case "down":
+      if (node.mapu != null) readText("Back"); // read option up
+      if (node.mapd != null) readText("Forward"); // read option down
+      if (node.mapl != null) readText("Right"); // read option left
+      if (node.mapr != null) readText("Left"); // read option right
+      break;
+    case "left":
+      if (node.mapu != null) readText("Right"); // read option up
+      if (node.mapd != null) readText("Left"); // read option down
+      if (node.mapl != null) readText("Forward"); // read option left
+      if (node.mapr != null) readText("Back"); // read option right
+      break;
+    case "right":
+      if (node.mapu != null) readText("Left"); // read option up
+      if (node.mapd != null) readText("Right"); // read option down
+      if (node.mapl != null) readText("Back"); // read option left
+      if (node.mapr != null) readText("Forward"); // read option right
+      break;
+  }
 }
 
 function takeInstruction(node, next_direction, person) {
-    switch (next_direction) {
-        case "forward":
-            if (person.direction === "up"){
-                person.direction = "up";
-                return node.mapu;
-            }
-            else if (person.direction === "down"){
-                person.direction = "up";
-                return node.mapd;
-            }
-            else if (person.direction === "left"){
-                person.direction = "up";
-                return node.mapl;
-            }
-            else{
-                person.direction = "up";
-                return node.mapr;
-            }
-        case "back":
-            if (person.direction === "up"){
-                person.direction = "down";
-                return node.mapd;
-            }
-            else if (person.direction === "down"){
-                person.direction = "down";
-                return node.mapu;
-            }
-            else if (person.direction === "left"){
-                person.direction = "down";
-                return node.mapr;
-            }
-            else{
-                person.direction = "down";
-                return node.mapl;
-            }
-        case "left":
-            if (person.direction === "up"){
-                person.direction = "left";
-                return node.mapl;
-            }
-            else if (person.direction === "down"){
-                person.direction = "left";
-                return node.mapr;
-            }
-            else if (person.direction === "left"){
-                person.direction = "left";
-                return node.mapd;
-            }
-            else{
-                person.direction = "left";
-                return node.mapu;
-            }
-        case "right":
-            if (person.direction === "up"){
-                person.direction = "right";
-                return node.mapr;
-            }
-            else if (person.direction === "down"){
-                person.direction = "right";
-                return node.mapl;
-            }
-            else if (person.direction === "left"){
-                person.direction = "right";
-                return node.mapu;
-            }
-            else {
-                person.direction = "right";
-                return node.mapd;
-            }
-    }
+  switch (next_direction) {
+    case "forward":
+      if (person.direction === "up") {
+        person.direction = "up";
+        return node.mapu;
+      } else if (person.direction === "down") {
+        person.direction = "up";
+        return node.mapd;
+      } else if (person.direction === "left") {
+        person.direction = "up";
+        return node.mapl;
+      } else {
+        person.direction = "up";
+        return node.mapr;
+      }
+    case "back":
+      if (person.direction === "up") {
+        person.direction = "down";
+        return node.mapd;
+      } else if (person.direction === "down") {
+        person.direction = "down";
+        return node.mapu;
+      } else if (person.direction === "left") {
+        person.direction = "down";
+        return node.mapr;
+      } else {
+        person.direction = "down";
+        return node.mapl;
+      }
+    case "left":
+      if (person.direction === "up") {
+        person.direction = "left";
+        return node.mapl;
+      } else if (person.direction === "down") {
+        person.direction = "left";
+        return node.mapr;
+      } else if (person.direction === "left") {
+        person.direction = "left";
+        return node.mapd;
+      } else {
+        person.direction = "left";
+        return node.mapu;
+      }
+    case "right":
+      if (person.direction === "up") {
+        person.direction = "right";
+        return node.mapr;
+      } else if (person.direction === "down") {
+        person.direction = "right";
+        return node.mapl;
+      } else if (person.direction === "left") {
+        person.direction = "right";
+        return node.mapu;
+      } else {
+        person.direction = "right";
+        return node.mapd;
+      }
+  }
 }
 
 function readText(text) {
-   // console.log(text);
-    // read text to user
+  // console.log(text);
+  // read text to user
 }

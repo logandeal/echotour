@@ -1,9 +1,11 @@
 <meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
 <html>
   <head>
     <title>echotour</title>
     <link rel="icon" type="image/png" href="mictransparent.png" />
     <link rel="stylesheet" href="style.css" />
+    <script src="map.js"></script>
     <script src="script.js"></script>
   </head>
   <body>
@@ -12,8 +14,12 @@
     <div class="main">
       <p id="prompt">Where do you want to tour?</p>
       <p id="diagnostic" class="cyan">...diagnostic messages</p>
-      <img id="mic" src="mic.png" />
+      <img
+        id="mic"
+        src="play.png"
+        onclick="mystart()"
+        alt="click at bottom of screen to start"
+      />
     </div>
   </body>
 </html>
-
