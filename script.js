@@ -77,9 +77,12 @@ function readText(newText) {
   if (newText != "") {
     document.getElementById("prompt").innerHTML = newText;
   }
-  const promptTxt = document.getElementById("prompt").textContent;
+  var promptTxt = document.getElementById("prompt").textContent;
   console.log(promptTxt);
 
+  if (promptTxt == "Thank you for touring lafferre!") {
+    promptTxt = "Thank you for touring laughrey!";
+  }
   const utterThis = new SpeechSynthesisUtterance(promptTxt);
   console.log(utterThis);
   utterThis.voice = voices[0];
@@ -103,7 +106,7 @@ function dictation(
 
   recognition.onresult = (event) => {
     let option_inputted = event.results[0][0].transcript;
-    if (option_inputted == "laughrey") {
+    if (option_inputted == "laughrey" || option_inputted == "laughing") {
       option_inputted = "lafferre";
     }
     diagnostic.textContent = `Result: ${option_inputted}.`;
@@ -200,9 +203,14 @@ function prompt_option(node, person) {
 
 function evaluate_option(direction_chosen, node, person) {
   if (direction_chosen == "leave") {
-    start_experience();
+    readText("Thank you for touring lafferre!");
+    return;
   }
-  node = takeInstruction(node, direction_chosen, person);
-  giveInstructions(node, person);
-  prompt_option(node, person);
+  new_node = takeInstruction(node, direction_chosen, person);
+  giveInstructions(new_node, person);
+  prompt_option(new_node, person);
 }
+
+// Tell user bad input
+// Update prompt
+// Make mic button legal
