@@ -36,7 +36,7 @@ class Person {
     }
 }
 
-//declaring nodes
+    //declaring nodes
 var root = new Node("the main entrance.", null, null, null);
 var node2 = new Node("a staircase with 12 steps going down.", "a hall that leads to the Interactive digital environments lab, E1419 Auditorium, and Mechanical and Aerospace.", "potential energy cafe.", "the front entrance.");
 var node3 = new Node("a long hallway that leads to the west wing and labs C1201 - C1206.", "an elevator, restrooms, labs C1210 - C1215, and an exit to the north couryard.", "a hallway that leads to the east wing, Overholser Atrium, labs C1243 - C1246, and labs C1249 - C1251.", "stairs with 12 steps leading up to potential energy cafe and the main entrance");
@@ -66,7 +66,7 @@ root.addUp(node2);
 node2.addUp(node3);
 node2.addLeft(node8);
 node2.addRight(node5);
-node2.addDown(node1);
+node2.addDown(root);
 
 node3.addUp(node7);
 node3.addLeft(node4);
@@ -117,6 +117,8 @@ node17.addLeft(node15);
 node17.addDown(node16);
 
 
+
+
 function giveInstructions(node, person) {
     currentString = "";
     switch(person.direction){
@@ -137,46 +139,46 @@ function giveInstructions(node, person) {
         }
         case "down":{
             if(node.downDesc != null){
-                currentString += "In front of you is " + node.upDesc + " ";
+                currentString += "In front of you is " + node.downDesc + " ";
             }
             if(node.leftDesc != null){
-                currentString += "To your right is " + node.rightDesc + " ";
+                currentString += "To your right is " + node.leftDesc + " ";
             }
             if(node.rightDesc != null){
-                currentString += "To your left is " + node.leftDesc + " ";
+                currentString += "To your left is " + node.rightDesc + " ";
             }
             if(node.upDesc != null){
-                currentString += "Behind you is " + node.downDesc + " ";
+                currentString += "Behind you is " + node.upDesc + " ";
             }
             break;
         }
         case "right":{
             if(node.rightDesc != null){
-                currentString += "In front of you is " + node.upDesc + " ";
+                currentString += "In front of you is " + node.rightDesc + " ";
             }
             if(node.downDesc != null){
-                currentString += "To your right is " + node.rightDesc + " ";
+                currentString += "To your right is " + node.downDesc + " ";
             }
             if(node.upDesc != null){
-                currentString += "To your left is " + node.leftDesc + " ";
+                currentString += "To your left is " + node.upDesc + " ";
             }
             if(node.leftDesc != null){
-                currentString += "Behind you is " + node.downDesc + " ";
+                currentString += "Behind you is " + node.leftDesc + " ";
             }
             break;
         }
         case "left":{
             if(node.leftDesc != null){
-                currentString += "In front of you is " + node.upDesc + " ";
+                currentString += "In front of you is " + node.leftDesc + " ";
             }
             if(node.upDesc != null){
-                currentString += "To your right is " + node.rightDesc + " ";
+                currentString += "To your right is " + node.upDesc + " ";
             }
             if(node.downDesc != null){
-                currentString += "To your left is " + node.leftDesc + " ";
+                currentString += "To your left is " + node.downDesc + " ";
             }
             if(node.rightDesc != null){
-                currentString += "Behind you is " + node.downDesc + " ";
+                currentString += "Behind you is " + node.rightDesc + " ";
             }
             break;
         }
@@ -285,6 +287,7 @@ function takeInstruction(node, next_direction, person) {
 }
 
 function readText(text) {
+    console.log(text);
     // read text to user
 }
 
