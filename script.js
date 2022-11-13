@@ -138,11 +138,11 @@ function dictation(
   recognition.onspeechend = () => {
     mic_icon.src = "mic.png";
     recognition.stop();
+    speechRecognition(options, node, person, isLocation);
   };
 
   recognition.onnomatch = () => {
     mic_icon.src = "mic.png";
-    recognizeSpeech();
     speechRecognition(options, node, person, isLocation);
   };
 
