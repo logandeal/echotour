@@ -104,7 +104,7 @@ function dictation(
   person, // 6
   isLocation // 7
 ) {
-  var result_obtained = false;
+  // var result_obtained = false;
 
   console.log("dictation started...");
 
@@ -114,7 +114,7 @@ function dictation(
   recognition.start();
 
   recognition.onresult = (event) => {
-    result_obtained = true;
+    // result_obtained = true;
     mic_icon.src = "mic.png";
     let option_inputted = event.results[0][0].transcript;
     if (option_inputted == "laughrey" || option_inputted == "laughing") {
