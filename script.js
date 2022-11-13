@@ -104,6 +104,8 @@ function dictation(
   person, // 6
   isLocation // 7
 ) {
+  var result_obtained = false;
+
   console.log("dictation started...");
 
   const mic_icon = document.getElementById("mic");
@@ -112,17 +114,17 @@ function dictation(
   recognition.start();
 
   recognition.onresult = (event) => {
+    result_obtained = true;
     mic_icon.src = "mic.png";
     let option_inputted = event.results[0][0].transcript;
     if (option_inputted == "laughrey" || option_inputted == "laughing") {
       option_inputted = "lafferre";
     }
     diagnostic.textContent = `Result: ${option_inputted}.`;
-    console.log("dictation started...");
     console.log(`Confidence: ${event.results[0][0].confidence}`);
     console.log(`result: ${event.results[0][0]}`);
     for (var i = 0; i < options.length; i++) {
-      if (options[i] == option_inputted) {
+      if (options[i].toLowerCase() == option_inputted) {
         if (isLocation) {
           console.log("if in for loop");
           evaluate_option_start(node, person);
@@ -136,17 +138,25 @@ function dictation(
   };
 
   recognition.onspeechend = () => {
-    mic_icon.src = "mic.png";
+    console.log("1 end");
+    mic_icon.src = "load.gif";
     recognition.stop();
-    speechRecognition(options, node, person, isLocation);
+    setTimeout(function () {
+      if (mic_icon.getAttribute("src") === "load.gif") {
+        mic_icon.src = "mic.png";
+        speechRecognition(options, node, person, isLocation);
+      }
+    }, 1000);
   };
 
   recognition.onnomatch = () => {
+    console.log("2 end");
     mic_icon.src = "mic.png";
     speechRecognition(options, node, person, isLocation);
   };
 
   recognition.onerror = (event) => {
+    console.log("3 end");
     mic_icon.src = "mic.png";
     diagnostic.textContent = `Error: ${event.error}`;
     speechRecognition(options, node, person, isLocation);
