@@ -141,12 +141,13 @@ function dictation(
     console.log("1 end");
     mic_icon.src = "load.gif";
     recognition.stop();
-    setTimeout(function () {
-      if (mic_icon.getAttribute("src") === "load.gif") {
-        mic_icon.src = "mic.png";
-        speechRecognition(options, node, person, isLocation);
-      }
-    }, 1000);
+    // setTimeout(function () {
+    //   if (mic_icon.getAttribute("src") === "load.gif") {
+    //     console.log(mic_icon.getAttribute("src"));
+    //     mic_icon.src = "mic.png";
+    //     speechRecognition(options, node, person, isLocation);
+    //   }
+    // }, 2000);
   };
 
   recognition.onnomatch = () => {
