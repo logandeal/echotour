@@ -1,5 +1,7 @@
 # echotour
 
+**[See DevPost](https://devpost.com/software/echotour)**
+
 An interactive, voice-guided audio tour, built for the visually impaired. 
 
 Starts with a map of a very difficult-to-navigate building: 
@@ -45,8 +47,6 @@ Lafferre Hall's layout accurately was its own project.
 **What's next:** map additional floors/buildings, integrate with existing
 visual tours and museum guides, and explore games for visually impaired
 users.
-
-Read more on [DevPost](https://devpost.com/software/echotour).
 
 ## Contributors
 
