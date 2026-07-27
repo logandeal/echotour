@@ -1,10 +1,9 @@
 # echotour
 
-An interactive, voice-guided audio tour of Lafferre Hall (University of
-Missouri's engineering building), built for the visually impaired. Built at
-**TigerHacks 2022**.
+An interactive, voice-guided audio tour, built for the visually impaired. 
 
-Live at [echotour.tech](https://echotour.tech).
+Starts with a map of a very difficult-to-navigate building: 
+Lafferre Hall (University of Missouri's engineering building).
 
 ## How it works
 
